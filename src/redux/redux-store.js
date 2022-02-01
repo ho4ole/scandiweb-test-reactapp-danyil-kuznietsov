@@ -2,9 +2,10 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunkMiddleware from "redux-thunk";
 import headerReducer from "./header-reducer";
 import sectionReducer from "./section-reducer";
+import currencyReducer from "./currency-reducer";
 
 let reducers = combineReducers({
-    header: headerReducer, section: sectionReducer
+    header: headerReducer, section: sectionReducer, currenciesState: currencyReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

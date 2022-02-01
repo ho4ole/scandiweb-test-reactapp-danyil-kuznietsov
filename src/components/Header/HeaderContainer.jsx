@@ -19,7 +19,6 @@ class HeaderContainer extends React.Component {
 let mapStateToProps = (state) => {
         return {
             categories: state.header.categories,
-            currencies: state.header.currencies
         }
     }
 

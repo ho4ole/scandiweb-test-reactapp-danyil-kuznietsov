@@ -5,7 +5,7 @@ import CurrencyLogo from "./CurrencyLogo";
 import {CurrencyDropDownStyled} from "../../styles/CurrenciesStyles/CurrencyDropDown.styled";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {getCurrencies} from "../../../redux/header-reducer";
+import {changeCurrency, getCurrencies} from "../../../redux/currency-reducer";
 
 
 class CurrencyContainer extends React.Component {
@@ -14,14 +14,14 @@ class CurrencyContainer extends React.Component {
         this.props.getCurrencies();
     }
 
+
     constructor(props) {
         super(props);
         this.state = {
-            isHover: false,
+            isHover: false
         }
         this.toggleCurrencyDropDown = this.toggleCurrencyDropDown.bind(this);
     }
-
 
     toggleCurrencyDropDown() {
         this.setState({
@@ -34,10 +34,10 @@ class CurrencyContainer extends React.Component {
         return <div>
             {this.state.isHover
 
-                ? <CurrencyDropDown currencies={this.props.currencies} image={currencyUp}
+                ? <CurrencyDropDown currentCurrency={this.props.currentCurrency} currencies={this.props.currencies} image={currencyUp} currencyChanger={this.props.changeCurrency}
                                     method={this.toggleCurrencyDropDown}/>
 
-                : <CurrencyDropDown currencies={this.props.currencies} image={currencyDown}
+                : <CurrencyDropDown currentCurrency={this.props.currentCurrency} currencies={this.props.currencies} image={currencyDown}
                                     method={this.toggleCurrencyDropDown}/>
 
             }
@@ -46,14 +46,14 @@ class CurrencyContainer extends React.Component {
     }
 }
 
-const CurrencyDropDown = (props) => {
+const CurrencyDropDown = ({currencies, image, currencyChanger, method, currentCurrency}) => {
     return <CurrencyDropDownStyled>
-        <div className="dropdown" onMouseEnter={props.method} onMouseLeave={props.method}>
-            <CurrencyLogo image={props.image} currentCurrency={"$"}/>
+        <div className="dropdown" onMouseEnter={method} onMouseLeave={method}>
+            <CurrencyLogo image={image} currentCurrency={currentCurrency}/>
             <div className="dropdown-content">
                 <div>
                     {
-                        props.currencies.map(u => <a id={props.currencies.indexOf(u)}>{u.label} {u.symbol}</a>)
+                        currencies.map(currency => <a onClick={() => { currencyChanger(currency.symbol) }} id={currencies.indexOf(currency)}> {currency.symbol} {currency.label}</a>)
                     }
                 </div>
             </div>
@@ -63,10 +63,11 @@ const CurrencyDropDown = (props) => {
 
 let mapStateToProps = (state) => {
     return {
-        currencies: state.header.currencies
+        currencies: state.currenciesState.currencies,
+        currentCurrency: state.currenciesState.currentCurrency
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getCurrencies})
+    connect(mapStateToProps, {getCurrencies, changeCurrency})
 )(CurrencyContainer)

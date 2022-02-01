@@ -1,4 +1,5 @@
 import {ProductStyled} from "../../styles/Product.styled";
+import PriceContainer from "./PriceContainer";
 
 
 const Product = (props) => {
@@ -8,7 +9,7 @@ const Product = (props) => {
             <span className={"description"}>{props.productName}</span>
         </div>
         <div>
-            <span className={"price"}>{props.price}</span>
+            <PriceContainer prices={props.prices}/>
         </div>
     </ProductStyled>
 }

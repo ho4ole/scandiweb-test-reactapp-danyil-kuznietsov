@@ -14,8 +14,8 @@ const Header = (props) => {
                        props.categories.map(u => <Category id={props.categories.indexOf(u)} name={u.name}/> )
                     }
                 </div>
-                <Logo src={logo}/>
-                 <CurrencyContainer currencies={props.currencies}/>
+                    <Logo src={logo}/>
+                    <CurrencyContainer/>
             </Nav>
         </Container>
     </HeaderStyled>

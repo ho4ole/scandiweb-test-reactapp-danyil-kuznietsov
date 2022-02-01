@@ -13,8 +13,8 @@ export const Nav = styled.nav`
 `
 
 export const Logo = styled.img`
-  margin: auto;
-  padding-top: 10px;
-  
-    
+  margin: 0 auto;
+  text-align:center;
+  float:left;
+ 
 `
