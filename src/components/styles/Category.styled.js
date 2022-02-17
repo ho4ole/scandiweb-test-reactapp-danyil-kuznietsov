@@ -11,4 +11,11 @@ export const CategoryStyled = styled.span`
     opacity: 0.9;
     transform: scale(0.98);
   }
+  
+  &:target {
+    border-bottom: 2px solid #4CAF50;
+    color: #4CAF50;
+    opacity: 0.9;
+    transform: scale(0.98);
+  }
 `

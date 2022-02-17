@@ -11,7 +11,7 @@ const Section = (props) => {
         </div>
         <ProductsStyled>
             {
-                props.products.map(product => (<Product key={product.id} prices={product.prices} productName={product.name} productImage={product.gallery[0]} />))
+                props.products.map(product => (<Product key={product.id} inStock={product.inStock} id={product.id} prices={product.prices} productName={product.name} productImage={product.gallery[0]} />))
             }
             </ProductsStyled>
     </Container>

@@ -53,7 +53,7 @@ const CurrencyDropDown = ({currencies, image, currencyChanger, method, currentCu
             <div className="dropdown-content">
                 <div>
                     {
-                        currencies.map(currency => <a onClick={() => { currencyChanger(currency.symbol) }} id={currencies.indexOf(currency)}> {currency.symbol} {currency.label}</a>)
+                        currencies.map(currency => <a onClick={() => { currencyChanger(currency.symbol) }} key={currencies.indexOf(currency)}> {currency.symbol} {currency.label}</a>)
                     }
                 </div>
             </div>

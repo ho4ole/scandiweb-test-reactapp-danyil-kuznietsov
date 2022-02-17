@@ -3,11 +3,38 @@ import styled from "styled-components"
 export const ProductStyled = styled.div`
   
   margin: 20px;
-  max-width: 300px;
+ 
+  .productName {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 160%;
+  }
   
-  img {
-    width: 300px;
-    height: 300px;
+  .imgContainer {
+    width: 360px;
+    height: 338px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .imgContainerInStock {
+    width: 360px;
+    height: 338px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .cartLogo {
+    display: none;
   }
 
   &:hover {
@@ -15,4 +42,17 @@ export const ProductStyled = styled.div`
     opacity: 1.1;
     transform: scale(1.1);
   }
+  
+  &:hover .cartLogo {
+    display: block;
+  }
+`
+
+export const ProductCartLogoStyled = styled.img`
+  position: absolute;
+  max-width: 50px;
+  max-height: 50px;
+  padding-left: 300px;
+  
+  
 `

@@ -1,5 +1,5 @@
 
-import {CATEGORIES, EXCHANGE_RATES} from "../apollo/ApolloQueries";
+import {CATEGORIES} from "../apollo/ApolloQueries";
 import {client} from "../apollo/ApolloClient";
 
 const SET_CATEGORIES = "SET_CATEGORIES"

@@ -1,6 +1,12 @@
 import styled from "styled-components"
 
 export const HeaderStyled = styled.header`
+
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  line-height: 80%;
   background-color: white;
   padding: 2px 0;
 `

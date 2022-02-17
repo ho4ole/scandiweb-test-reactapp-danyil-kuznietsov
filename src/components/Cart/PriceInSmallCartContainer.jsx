@@ -1,10 +1,10 @@
 import {Component} from "react";
 import {compose} from "redux";
 import {connect} from "react-redux";
-import Price from "./Price";
+import PriceInCart from "./PriceInCart";
 
 
-class PriceContainer extends Component {
+class PriceInSmallCartContainer extends Component {
 
     componentDidMount() {
         this.props.prices.forEach(
@@ -25,7 +25,7 @@ class PriceContainer extends Component {
                     if (price.currency.symbol === this.props.currentCurrency) {
                         this.setState({
                             prices: this.props.prices,
-                            price: price
+                            price: price,
                         })
                     }
                 }
@@ -49,7 +49,7 @@ class PriceContainer extends Component {
 
     render() {
         return <div>
-            <Price price={this.state.price}/>
+            <PriceInCart price={this.state.price} quantity={this.props.quantity}/>
         </div>
     }
 }
@@ -63,4 +63,4 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {})
-)(PriceContainer)
+)(PriceInSmallCartContainer)

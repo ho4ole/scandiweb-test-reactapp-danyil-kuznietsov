@@ -18,8 +18,8 @@ export const CATEGORIES = gql`
 `;
 
 export const PRODUCTS = gql`
-  query GetProducts {
-    category {
+  query GetProducts ($categoryInput: CategoryInput!) {
+    category (input: $categoryInput) {
       name
       products{
         id
@@ -35,6 +35,36 @@ export const PRODUCTS = gql`
         }
         brand
       }
+      }
+  }
+`;
+
+export const PRODUCT = gql`
+      query GetProduct ($id: String!) {
+      product (id: $id){
+        id
+        name
+        inStock
+        gallery
+        description
+        attributes {
+          id
+          name
+          type
+          items {
+            displayValue
+            value
+            id
+          }
+        }
+        prices {
+          currency {
+            label
+            symbol
+          }
+          amount
+        }
+        brand
       }
   }
 `;

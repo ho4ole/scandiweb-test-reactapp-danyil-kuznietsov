@@ -2,9 +2,10 @@ import {client} from "../apollo/ApolloClient";
 import {PRODUCTS} from "../apollo/ApolloQueries";
 
 const SET_PRODUCTS = "SET_PRODUCTS"
+const SET_SECTION = "SET_SECTION"
 
 let initialState = {
-    sectionName: "",
+    sectionName: {title: "all"},
     products: []
 
 };
@@ -12,10 +13,19 @@ let initialState = {
 const sectionReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SET_PRODUCTS: {
+
+        case SET_SECTION: {
             return {
                 ...state,
-                products: [...state.products, ...action.data.products]
+                sectionName: {
+                    title: action.data.title
+                }
+            }
+        }
+
+        case SET_PRODUCTS: {
+            return {
+                products: [...action.data.products]
             }
         }
         default:
@@ -25,9 +35,11 @@ const sectionReducer = (state = initialState, action) => {
 
 
 export const setUpProducts = (data) => ({type: SET_PRODUCTS, data})
+export const setUpSection = (data) => ({type: SET_SECTION, data})
 
-export const getProducts = () => async (dispatch) => {
-    client.query({query: PRODUCTS}).then(result => dispatch(setUpProducts(result.data.category)));
+export const getProducts = (categoryInput) => async (dispatch) => {
+    client.query({query: PRODUCTS, variables: {categoryInput: categoryInput}}).then(result => dispatch(setUpProducts(result.data.category)));
+    dispatch(setUpSection(categoryInput));
 }
 
 export default sectionReducer;
