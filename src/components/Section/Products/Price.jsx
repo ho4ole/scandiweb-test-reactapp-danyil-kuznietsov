@@ -1,15 +1,12 @@
 import {PriceStyled} from "../../styles/Price.styled";
+import {Component} from "react";
 
-const Price = (props) => {
-    let quantity = 1
-    if (props.quantity)
-    {
-        quantity = props.quantity
+class Price extends Component {
+    render() {
+        return <PriceStyled>
+            <span>{this.props.price.currency.symbol} {parseFloat(this.props.price.amount).toFixed(2)}</span>
+        </PriceStyled>
     }
-
-    return  <PriceStyled>
-        <span>{props.price.currency.symbol} {props.price.amount * quantity}</span>
-    </PriceStyled>
 }
 
 export default Price

@@ -36,7 +36,7 @@ class PriceInCart extends Component {
 
     render() {
         return <PriceStyled>
-            <span>{this.props.price.currency.symbol} {this.props.price.amount * this.props.quantity}</span>
+            <span>{this.props.price.currency.symbol} {parseFloat(this.props.price.amount).toFixed(2)}</span>
         </PriceStyled>
     }
 

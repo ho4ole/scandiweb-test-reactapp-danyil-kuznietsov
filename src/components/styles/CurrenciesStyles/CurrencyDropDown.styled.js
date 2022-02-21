@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const CurrencyDropDownStyled = styled.span`
 
-  
+
   .dropdown {
     position: relative;
     display: inline-block;
@@ -32,5 +32,5 @@ export const CurrencyDropDownStyled = styled.span`
   .dropdown:hover .dropdown-content {
     display: block;
   }
-  
+
 `

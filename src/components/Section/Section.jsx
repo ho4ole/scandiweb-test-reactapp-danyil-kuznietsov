@@ -4,17 +4,21 @@ import {Container} from "../styles/Container.styled";
 import React from "react";
 
 
-const Section = (props) => {
-    return <Container>
-        <div>
-            <h1>{props.categoryName}</h1>
-        </div>
-        <ProductsStyled>
-            {
-                props.products.map(product => (<Product key={product.id} inStock={product.inStock} id={product.id} prices={product.prices} productName={product.name} productImage={product.gallery[0]} />))
-            }
+class Section extends React.Component {
+
+    render() {
+        return <Container>
+            <div>
+                <h1>{this.props.categoryName}</h1>
+            </div>
+            <ProductsStyled>
+                {
+                    this.props.products.map(product => (
+                        <Product key={product.id}  {...product} />))
+                }
             </ProductsStyled>
-    </Container>
+        </Container>
+    }
 }
 
 export default Section

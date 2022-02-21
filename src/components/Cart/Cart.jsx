@@ -12,7 +12,10 @@ class Cart extends Component {
             <Container>
                 <div>
                     <div>CART</div>
-                    {this.props.products.map(product => <ProductInCart key={product.id} minusQuantity={this.props.minusQuantity} addQuantity={this.props.addQuantity} product = {product}/>)}
+                    {this.props.products.map(product => <ProductInCart key={product.id}
+                                                                       minusQuantity={this.props.minusQuantity}
+                                                                       addQuantity={this.props.addQuantity}
+                                                                       product={product}/>)}
                 </div>
             </Container>
         )

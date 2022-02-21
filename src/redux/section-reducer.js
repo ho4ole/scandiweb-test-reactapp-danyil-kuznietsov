@@ -3,11 +3,12 @@ import {PRODUCTS} from "../apollo/ApolloQueries";
 
 const SET_PRODUCTS = "SET_PRODUCTS"
 const SET_SECTION = "SET_SECTION"
+const SET_FETCHING_STATUS = "SET_FETCHING_STATUS"
 
 let initialState = {
     sectionName: {title: "all"},
-    products: []
-
+    products: [],
+    firstFetching: true
 };
 
 const sectionReducer = (state = initialState, action) => {
@@ -20,6 +21,13 @@ const sectionReducer = (state = initialState, action) => {
                 sectionName: {
                     title: action.data.title
                 }
+            }
+        }
+
+        case SET_FETCHING_STATUS: {
+            return {
+                ...state,
+                firstFetching: false
             }
         }
 
@@ -36,10 +44,18 @@ const sectionReducer = (state = initialState, action) => {
 
 export const setUpProducts = (data) => ({type: SET_PRODUCTS, data})
 export const setUpSection = (data) => ({type: SET_SECTION, data})
+export const setUpFetchingStatus = () => ({type: SET_FETCHING_STATUS})
 
 export const getProducts = (categoryInput) => async (dispatch) => {
-    client.query({query: PRODUCTS, variables: {categoryInput: categoryInput}}).then(result => dispatch(setUpProducts(result.data.category)));
+    client.query({
+        query: PRODUCTS,
+        variables: {categoryInput: categoryInput}
+    }).then(result => dispatch(setUpProducts(result.data.category)));
     dispatch(setUpSection(categoryInput));
+}
+
+export const changeFetchingStatus = () => async (dispatch) => {
+    dispatch(setUpFetchingStatus());
 }
 
 export default sectionReducer;

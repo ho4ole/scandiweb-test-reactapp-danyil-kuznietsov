@@ -44,11 +44,9 @@ class ProductSectionContainer extends Component {
     }
 
     replaceAttributes = (product) => {
-
-        if (product.attributes.length !== 0 && this.state.attributes.length === 0) {
+        if ((product.attributes.length !== 0 && this.state.attributes.length === 0) || (product.attributes.length !== this.state.attributes.length)) {
             alert("You need to select attributes!)")
-        }
-        else {
+        } else {
             this.state.product = {...product}
             this.state.product.quantity = 1;
             this.state.product.attributes = [...this.state.attributes]

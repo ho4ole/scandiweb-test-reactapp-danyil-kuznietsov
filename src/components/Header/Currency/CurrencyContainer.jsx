@@ -6,6 +6,7 @@ import {CurrencyDropDownStyled} from "../../styles/CurrenciesStyles/CurrencyDrop
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {changeCurrency, getCurrencies} from "../../../redux/currency-reducer";
+import * as PropTypes from "prop-types";
 
 
 class CurrencyContainer extends React.Component {
@@ -34,10 +35,13 @@ class CurrencyContainer extends React.Component {
         return <div>
             {this.state.isHover
 
-                ? <CurrencyDropDown currentCurrency={this.props.currentCurrency} currencies={this.props.currencies} image={currencyUp} currencyChanger={this.props.changeCurrency}
+                ? <CurrencyDropDown currentCurrency={this.props.currentCurrency} shouldClose={this.state.isHover}
+                                    currencies={this.props.currencies} image={currencyUp}
+                                    currencyChanger={this.props.changeCurrency}
                                     method={this.toggleCurrencyDropDown}/>
 
-                : <CurrencyDropDown currentCurrency={this.props.currentCurrency} currencies={this.props.currencies} image={currencyDown}
+                : <CurrencyDropDown currentCurrency={this.props.currentCurrency} currencies={this.props.currencies}
+                                    image={currencyDown}
                                     method={this.toggleCurrencyDropDown}/>
 
             }
@@ -46,19 +50,38 @@ class CurrencyContainer extends React.Component {
     }
 }
 
-const CurrencyDropDown = ({currencies, image, currencyChanger, method, currentCurrency}) => {
-    return <CurrencyDropDownStyled>
-        <div className="dropdown" onMouseEnter={method} onMouseLeave={method}>
-            <CurrencyLogo image={image} currentCurrency={currentCurrency}/>
-            <div className="dropdown-content">
-                <div>
-                    {
-                        currencies.map(currency => <a onClick={() => { currencyChanger(currency.symbol) }} key={currencies.indexOf(currency)}> {currency.symbol} {currency.label}</a>)
-                    }
-                </div>
+class CurrencyDropDown extends React.Component {
+
+    render() {
+        let {currencies, image, currencyChanger, method, currentCurrency} = this.props;
+        return <CurrencyDropDownStyled>
+            <div className="dropdown" onMouseEnter={method} onMouseLeave={method}>
+                <CurrencyLogo image={image} currentCurrency={currentCurrency}/>
+                {this.props.shouldClose ? <div className="dropdown-content">
+                        <div>
+                            {
+                                currencies.map(currency => <a onClick={() => {
+                                    currencyChanger(currency.symbol)
+                                    method();
+                                }} key={currencies.indexOf(currency)}> {currency.symbol} {currency.label}</a>)
+                            }
+                        </div>
+                    </div>
+
+                    : <></>
+
+                }
             </div>
-        </div>
-    </CurrencyDropDownStyled>
+        </CurrencyDropDownStyled>
+    }
+}
+
+CurrencyDropDown.propTypes = {
+    currencies: PropTypes.any,
+    image: PropTypes.any,
+    currencyChanger: PropTypes.any,
+    method: PropTypes.any,
+    currentCurrency: PropTypes.any
 }
 
 let mapStateToProps = (state) => {

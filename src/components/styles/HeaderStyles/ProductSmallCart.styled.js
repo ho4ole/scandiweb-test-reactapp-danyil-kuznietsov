@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ProductSmallCartStyled = styled.div`
-
+  
   width: 325px;
   max-width: 100%;
   padding: 10px 0;
@@ -32,7 +32,28 @@ export const ProductSmallCartStyled = styled.div`
     display: flex;
     flex-flow: row;
   }
-  
+
+  .arrowRight {
+    border: 2px solid #FFFFFF;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    z-index: 2;
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    background-color: black;
+  }
+
+  .arrowLeft {
+    border: 2px solid #FFFFFF;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    z-index: 2;
+    position: absolute;
+    left: 120px;
+    bottom: 80px;
+    background-color: black;
+  }
+
+
   .productInterface {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
@@ -46,12 +67,10 @@ export const ProductSmallCartStyled = styled.div`
   }
 
   .imgContainer {
-    width: 400px;
-    height: 150px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 10px;
+    object-fit: cover;
+    width: 105px;
+    height: 137px;
+    padding-left: 2px;
   }
   
   

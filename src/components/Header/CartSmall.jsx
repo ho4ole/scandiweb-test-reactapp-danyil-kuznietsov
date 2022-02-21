@@ -31,13 +31,14 @@ class CartSmall extends React.Component {
         return <div>
             {this.state.isHover
 
-                ? <CartDropDown products={this.props.products} minusQuantity={this.props.minusQuantity} productsCount={this.props.productsCount}
+                ? <CartDropDown products={this.props.products} minusQuantity={this.props.minusQuantity}
+                                productsCount={this.props.productsCount}
                                 addQuantity={this.props.addQuantity}
                                 method={this.toggleCurrencyDropDown}/>
 
                 : <CartDropDown products={this.props.products} minusQuantity={this.props.minusQuantity}
                                 addQuantity={this.props.addQuantity}
-                                method={this.toggleCurrencyDropDown}  productsCount={this.props.productsCount} />
+                                method={this.toggleCurrencyDropDown} productsCount={this.props.productsCount}/>
 
             }
         </div>
@@ -56,11 +57,11 @@ const CartDropDown = ({products, method, productsCount, minusQuantity, addQuanti
                 </div>
                 <div>
                     {products.map(product => <ProductInSmallCart key={product.id} minusQuantity={minusQuantity}
-                                                            addQuantity={addQuantity}
-                                                            product={product}/>)}
+                                                                 addQuantity={addQuantity}
+                                                                 product={product}/>)}
                 </div>
                 <div>
-                   <TotalPrice/>
+                    <TotalPrice/>
                 </div>
                 <div className={"buttons"}>
                     <NavLink className={"link"} to={"/cart"}>
@@ -69,10 +70,10 @@ const CartDropDown = ({products, method, productsCount, minusQuantity, addQuanti
                     <NavLink to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"}>
                         <button className={"checkButton"}>CHECK OUT</button>
                     </NavLink>
-
                 </div>
             </div>
         </div>
+        <div className={"overlay"}/>
     </CartDropDownStyled>
 }
 

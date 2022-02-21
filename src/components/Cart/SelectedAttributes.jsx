@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {AttributeStyled} from "../styles/Attribute.styled";
+import {SelectedAttributeStyled} from "../styles/SelectedAttribute.styled";
 
 class SelectedAttributes extends Component {
 
@@ -7,14 +7,17 @@ class SelectedAttributes extends Component {
         return (
             <>
                 {this.props.attribute.name === "Color"
-                    ? this.props.attribute.items.map(item => <AttributeStyled> <label>  <input type={"radio"} className={"dotInput"} defaultChecked={"true"}
+                    ? this.props.attribute.items.map(item => <SelectedAttributeStyled>
+                        <a>{this.props.attribute.name}:</a> <label> <input type={"radio"} className={"dotInput"}
+                                                                           defaultChecked={"true"}
                     />
-                       <span
-                            style={{background: `${item.value}`}} className="dot"/>  </label> </AttributeStyled>)
+                        <span
+                            style={{background: `${item.value}`}} className="dot"/> </label> </SelectedAttributeStyled>)
 
-                    : this.props.attribute.items.map(item => <AttributeStyled> <label> <input type={"radio"} checked={"true"}
+                    : this.props.attribute.items.map(item => <SelectedAttributeStyled>
+                        <a>{this.props.attribute.name}:</a> <label> <input type={"radio"} checked={"true"}
                     />
-                        <span>{item.value}</span> </label> </AttributeStyled>)
+                        <span>{item.value}</span> </label> </SelectedAttributeStyled>)
                 }
             </>
         )

@@ -1,4 +1,3 @@
-
 import {CATEGORIES} from "../apollo/ApolloQueries";
 import {client} from "../apollo/ApolloClient";
 

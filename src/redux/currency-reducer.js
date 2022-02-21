@@ -1,5 +1,5 @@
 import {client} from "../apollo/ApolloClient";
-import {EXCHANGE_RATES } from "../apollo/ApolloQueries";
+import {EXCHANGE_RATES} from "../apollo/ApolloQueries";
 
 const SET_CURRENCIES = "SET_CURRENCIES"
 const SET_CURRENT_CURRENCY = "SET_CURRENT_CURRENCY"
@@ -42,7 +42,7 @@ export const getCurrencies = () => async (dispatch) => {
 }
 
 export const changeCurrency = (currency) => (dispatch) => {
-   dispatch(setUpCurrentCurrencies(currency));
+    dispatch(setUpCurrentCurrencies(currency));
 }
 
 export default currencyReducer;

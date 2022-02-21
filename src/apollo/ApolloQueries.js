@@ -23,7 +23,11 @@ export const PRODUCTS = gql`
       name
       products{
         id
+        category
         name
+         attributes {
+          id
+        }
         inStock
         gallery
         prices {

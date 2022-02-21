@@ -36,7 +36,10 @@ const productReducer = (state = initialState, action) => {
 export const setUpProduct = (data) => ({type: SET_PRODUCT, data})
 
 export const getProduct = (productId) => async (dispatch) => {
-    client.query({query: PRODUCT, variables: {id: productId}}).then(result => dispatch(setUpProduct(result.data.product)));
+    client.query({
+        query: PRODUCT,
+        variables: {id: productId}
+    }).then(result => dispatch(setUpProduct(result.data.product)));
 }
 
 export default productReducer;

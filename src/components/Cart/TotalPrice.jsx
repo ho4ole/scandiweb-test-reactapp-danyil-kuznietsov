@@ -1,4 +1,3 @@
-
 import {Component} from "react";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -8,7 +7,7 @@ class TotalPrice extends Component {
 
 
     render() {
-        return <span>{this.props.currentCurrency} {this.props.totalPrice}</span>
+        return <span>Total: {this.props.currentCurrency} {this.props.totalPrice}</span>
     }
 
 }

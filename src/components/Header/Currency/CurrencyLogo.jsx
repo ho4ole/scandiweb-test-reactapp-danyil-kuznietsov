@@ -1,9 +1,12 @@
+import {Component} from "react";
 
-const CurrencyLogo = (props) => {
-    return <div>
-        <span>{props.currentCurrency}</span>
-        <img src={props.image}/>
-    </div>
+class CurrencyLogo extends Component {
+    render() {
+        return <div>
+            <span>{this.props.currentCurrency}</span>
+            <img src={this.props.image}/>
+        </div>
+    }
 }
 
 

@@ -7,7 +7,7 @@ const DECREASE_TOTAL = "DECREASE_TOTAL"
 let initialState = {
     products: [],
     productsCount: 0,
-    totalPrice: 0
+    totalPrice: 0.00
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -16,30 +16,52 @@ const cartReducer = (state = initialState, action) => {
 
         case ADD_PRODUCT: {
 
-            // I tried to make a product selector, so if we add a product with the same attributes it will be count like old one
 
-           /* state.products.forEach(product => {
-             if (product.id === action.data.id) {
+            debugger
+
+            let newProduct = {...action.data};
+
+            // creating a cartId for products based on their id + selected attributes
+            newProduct.cartId = newProduct.id
+            newProduct.attributes.forEach(attribute => {
+                newProduct.cartId = newProduct.cartId + ` ${attribute.items[0].value}`;
+            })
+
+            state.products.forEach(product => {
+                if (product.cartId === newProduct.cartId) {
                     product.quantity++;
-                    action.data.quantity++;
+                    newProduct.quantity++;
+                }
+            })
+
+            state.productsCount++;
+
+            switch (newProduct.quantity) {
+                case 1: {
+                    return {
+                        ...state,
+                        products: [...state.products, newProduct]
+                    }
+                }
+
+                case 2: {
                     return {
                         ...state,
                         products: [...state.products]
                     }
                 }
-            })*/
 
-            if (action.data.quantity === 1) {
-                state.productsCount++;
-                return {
-                    ...state,
-                    products: [...state.products, action.data]
-                }
+                default:
+                    return state;
+
             }
         }
 
         case INCREASE_TOTAL: {
-            state.totalPrice += action.data;
+            debugger
+            state.totalPrice += parseFloat(action.data.toFixed(2));
+            let num = state.totalPrice;
+            state.totalPrice = parseFloat(num.toFixed(2));
             return {
                 ...state,
                 totalPrice: state.totalPrice
@@ -47,7 +69,9 @@ const cartReducer = (state = initialState, action) => {
         }
 
         case DECREASE_TOTAL: {
-            state.totalPrice -= action.data;
+            state.totalPrice -= parseFloat(action.data.toFixed(2));
+            let num = state.totalPrice;
+            state.totalPrice = parseFloat(num.toFixed(2));
             return {
                 ...state,
                 totalPrice: state.totalPrice
@@ -102,7 +126,6 @@ export const addQuantity = (product) => (dispatch) => {
 }
 
 export const addTotal = (price) => (dispatch) => {
-    debugger
     dispatch(setUpIncreaseTotal(price));
 }
 
@@ -111,3 +134,4 @@ export const minusTotal = (price) => (dispatch) => {
 }
 
 export default cartReducer;
+

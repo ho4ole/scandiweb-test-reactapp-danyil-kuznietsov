@@ -8,7 +8,6 @@ import {withRouter} from "react-router";
 class HeaderContainer extends React.Component {
     componentDidMount() {
         this.props.getCategories();
-        this.props.history.push("/section/" + this.props.sectionName.title);
     }
 
 
@@ -22,7 +21,6 @@ class HeaderContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         categories: state.header.categories,
-        sectionName: state.section.sectionName
     }
 }
 
