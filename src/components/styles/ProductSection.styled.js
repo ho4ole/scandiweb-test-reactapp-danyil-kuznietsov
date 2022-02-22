@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 export const ProductSectionStyled = styled.div`
-
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+  
+  @import url('${"https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap"}');
+  @import url('${"https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"}');
 
   width: 1200px;
   max-width: 100%;

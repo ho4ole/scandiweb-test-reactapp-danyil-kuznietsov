@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const SelectedAttributeStyled = styled.div`
-
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+  
+  @import url('${"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap"}');
   
   width: 100%;
   margin: 0 auto;
@@ -56,12 +56,4 @@ export const SelectedAttributeStyled = styled.div`
     cursor: pointer;
   }
   
-`
-
-export const AttributesFormStyled = styled.form`
-  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  
-    
 `

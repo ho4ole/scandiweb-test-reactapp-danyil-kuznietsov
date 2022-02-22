@@ -13,7 +13,7 @@ export const CartDropDownStyled = styled.span`
     display: none;
     position: absolute;
     min-width: 90px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
   }
 

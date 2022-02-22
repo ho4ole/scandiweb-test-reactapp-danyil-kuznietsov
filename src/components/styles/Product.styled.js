@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ProductStyled = styled.div`
 
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+  @import url('${"https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap"}');
 
   margin: 20px;
 
@@ -61,7 +61,7 @@ export const ProductStyled = styled.div`
   }
 
   &:hover {
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     opacity: 1.1;
     transform: scale(1.1);
   }

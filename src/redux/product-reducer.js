@@ -14,7 +14,6 @@ let initialState = {
         attributes: [],
         prices: []
     }
-
 };
 
 const productReducer = (state = initialState, action) => {
@@ -31,7 +30,6 @@ const productReducer = (state = initialState, action) => {
             return state;
     }
 }
-
 
 export const setUpProduct = (data) => ({type: SET_PRODUCT, data})
 

@@ -17,7 +17,6 @@ const headerReducer = (state = initialState, action) => {
             }
         }
 
-
         default:
             return state;
     }

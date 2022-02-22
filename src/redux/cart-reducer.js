@@ -16,9 +16,6 @@ const cartReducer = (state = initialState, action) => {
 
         case ADD_PRODUCT: {
 
-
-            debugger
-
             let newProduct = {...action.data};
 
             // creating a cartId for products based on their id + selected attributes

@@ -6,7 +6,6 @@ import CurrencyContainer from "./Currency/CurrencyContainer";
 import CartSmall from "./CartSmall";
 import {Component} from "react";
 
-
 class Header extends Component {
     render() {
         return <HeaderStyled>

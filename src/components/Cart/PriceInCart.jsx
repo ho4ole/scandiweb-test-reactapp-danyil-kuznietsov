@@ -42,7 +42,7 @@ class PriceInCart extends Component {
 
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = () => {
     return {}
 }
 

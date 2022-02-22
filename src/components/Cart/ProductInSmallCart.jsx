@@ -65,7 +65,7 @@ class ProductInSmallCart extends Component {
                             <button onClick={() => this.props.minusQuantity(this.props.product)}>-</button>
                         </div>
                         <div>
-                            <img alt={"photo"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                            <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
                             <img alt={"arrow right"} onClick={() => {
                                 this.changePhotoLeft()
                             }} className={"arrowRight"}

@@ -10,9 +10,6 @@ import {addProduct} from "../../../redux/cart-reducer";
 
 class Product extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
     addProductToCart = (product) => {
         if (product.attributes.length) {

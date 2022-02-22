@@ -4,7 +4,7 @@ class CurrencyLogo extends Component {
     render() {
         return <div>
             <span>{this.props.currentCurrency}</span>
-            <img src={this.props.image}/>
+            <img alt={this.props.image} src={this.props.image}/>
         </div>
     }
 }

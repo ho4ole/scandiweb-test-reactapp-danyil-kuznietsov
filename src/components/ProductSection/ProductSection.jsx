@@ -30,7 +30,7 @@ class ProductSection extends React.Component {
             </div>
 
             <div className={"mainPhoto"}>
-                <img src={this.state.mainPhoto}/>
+                <img alt={this.state.mainPhoto} src={this.state.mainPhoto}/>
             </div>
 
             <div className={"main"}>

@@ -4,8 +4,8 @@ import AttributesButtons from "./AttributesButtons";
 
 class Attributes extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.onValueChange = this.onValueChange.bind(this);
     }
 

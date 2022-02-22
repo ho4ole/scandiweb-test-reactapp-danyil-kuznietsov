@@ -8,6 +8,7 @@ import {addProduct} from "../../redux/cart-reducer";
 
 
 class ProductSectionContainer extends Component {
+    productId;
 
 
     componentDidMount() {
@@ -47,10 +48,10 @@ class ProductSectionContainer extends Component {
         if ((product.attributes.length !== 0 && this.state.attributes.length === 0) || (product.attributes.length !== this.state.attributes.length)) {
             alert("You need to select attributes!)")
         } else {
-            this.state.product = {...product}
-            this.state.product.quantity = 1;
-            this.state.product.attributes = [...this.state.attributes]
-            return this.state.product
+            let newProduct = {...product}
+            newProduct.quantity = 1;
+            newProduct.attributes = [...this.state.attributes]
+            return newProduct;
         }
     }
 

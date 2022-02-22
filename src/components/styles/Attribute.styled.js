@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const AttributeStyled = styled.div`
 
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
 
   width: 100%;
   margin: 0 auto;

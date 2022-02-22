@@ -17,8 +17,7 @@ class ProductInCart extends Component {
     }
 
     changePhotoLeft = () => {
-        console.log(this.state.photoIndex)
-        let index = this.state.photoIndex
+        let index = this.state.photoIndex;
         if (this.state.photoIndex === 0) {
             index = 0;
         } else {
@@ -31,8 +30,7 @@ class ProductInCart extends Component {
     }
 
     changePhotoRight = () => {
-        console.log(this.state.photoIndex)
-        let index = this.state.photoIndex
+        let index = this.state.photoIndex;
         if (this.state.photoIndex === this.props.product.gallery.length - 1) {
             index = this.props.product.gallery.length - 1;
         } else {
@@ -67,7 +65,7 @@ class ProductInCart extends Component {
                             <button onClick={() => this.props.minusQuantity(this.props.product)}>-</button>
                         </div>
                         <div>
-                            <img alt={"photo"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                            <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
                             <img alt={"arrow right"} onClick={() => {
                                 this.changePhotoLeft()
                             }} className={"arrowRight"}
