@@ -7,5 +7,17 @@ export const Container = styled.div`
   padding: 10px 0;
   margin: 0 auto;
   justify-content: center;
+  
+  .textCart {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 40px;
+    /* identical to box height, or 125% */
+
+    text-transform: uppercase;
+
+    color: #1D1F22;
+  }
 
 `

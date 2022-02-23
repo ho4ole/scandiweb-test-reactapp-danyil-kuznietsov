@@ -26,7 +26,6 @@ class CartSmall extends React.Component {
         })
     }
 
-
     render() {
         return <div>
             {this.state.isHover
@@ -65,7 +64,7 @@ const CartDropDown = ({products, method, productsCount, minusQuantity, addQuanti
                 </div>
                 <div className={"buttons"}>
                     <NavLink className={"link"} to={"/cart"}>
-                        <button>VIEW BAG</button>
+                        <button className={"viewB"}>VIEW BAG</button>
                     </NavLink>
                     <NavLink to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"}>
                         <button className={"checkButton"}>CHECK OUT</button>

@@ -60,6 +60,7 @@ class CurrencyDropDown extends React.Component {
                 {this.props.shouldClose ? <div className="dropdown-content">
                         <div>
                             {
+                                // eslint-disable-next-line jsx-a11y/anchor-is-valid
                                 currencies.map(currency => <a onClick={() => {
                                     currencyChanger(currency.symbol)
                                     method();

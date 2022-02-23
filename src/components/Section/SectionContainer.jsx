@@ -1,6 +1,6 @@
 import {Component} from "react";
 import Section from "./Section";
-import {changeFetchingStatus, getProducts} from "../../redux/section-reducer";
+import {changeAllFetchedStatus, getProducts} from "../../redux/section-reducer";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
@@ -9,12 +9,29 @@ import {withRouter} from "react-router";
 class SectionContainer extends Component {
 
     componentDidMount() {
-        if (this.props.firstFetching && this.props.products.length === 0) {
-            this.props.getProducts(this.props.sectionName);
-            this.props.changeFetchingStatus();
-            this.sortProducts(this.props.match.params.sectionName);
+        debugger
+        if (this.props.match.params.sectionName === "all" && !this.props.isAllFetched) {
+            this.props.getProducts("all");
+            this.sortProducts("all");
+            this.props.changeAllFetchedStatus();
         } else {
-            this.sortProducts(this.props.match.params.sectionName);
+
+            if (this.props.isAllFetched) {
+                this.sortProducts(this.props.match.params.sectionName);
+            } else {
+                let isFetched = false;
+                this.props.fetchedCategories.forEach(category => {
+                    if (category === this.props.match.params.sectionName) {
+                        this.sortProducts(this.props.match.params.sectionName);
+                        isFetched = true;
+                    }
+                })
+
+                if (!isFetched) {
+                    this.props.getProducts(this.props.match.params.sectionName);
+                    this.sortProducts(this.props.match.params.sectionName);
+                }
+            }
         }
     }
 
@@ -60,7 +77,8 @@ let mapStateToProps = (state) => {
     return {
         products: state.section.products,
         sectionName: state.section.sectionName,
-        firstFetching: state.section.firstFetching
+        fetchedCategories: state.section.fetchedCategories,
+        isAllFetched: state.section.isAllFetched
     }
 }
 
@@ -68,6 +86,6 @@ let withUrlDataSectionContainer = withRouter(SectionContainer);
 
 
 export default compose(
-    connect(mapStateToProps, {getProducts, changeFetchingStatus})
+    connect(mapStateToProps, {getProducts, changeAllFetchedStatus})
 )(withUrlDataSectionContainer)
 

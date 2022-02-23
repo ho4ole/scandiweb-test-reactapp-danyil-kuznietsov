@@ -1,28 +1,36 @@
 import styled from "styled-components"
 
 export const ProductSmallCartStyled = styled.div`
+
+  @import url('${"https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap"}');
   
-  width: 325px;
+  width: 300px;
   max-width: 100%;
-  padding: 10px 0;
   margin: 0 auto;
   justify-content: center;
-  border-top: 1px solid #E5E5E5;
-
   
   .product {
     border-bottom: 1px solid #E5E5E5;
     display: grid;
-    grid-template-columns: 1fr  1fr;
+    grid-template-columns: 1fr  2fr;
+
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 16px;
+    align-items: center;
+  }
+  
+  .productInfo {
+   padding: 10px;
+    line-height: 20px;
   }
   
   .attributes {
     display: flex;
     flex-flow: column;
-    padding: 5px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+    max-width: 300px;
+    text-align: left;
   }
   
   .productCount {
@@ -32,32 +40,38 @@ export const ProductSmallCartStyled = styled.div`
     display: flex;
     flex-flow: row;
   }
+  
+  .quantity {
+    position: absolute;
+    top: 80px;
+  }
 
   .arrowRight {
-    border: 2px solid #FFFFFF;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     z-index: 2;
     position: absolute;
     bottom: 80px;
-    left: 20px;
-    background-color: black;
+    left: 30px;
   }
 
   .arrowLeft {
-    border: 2px solid #FFFFFF;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     z-index: 2;
     position: absolute;
     left: 120px;
     bottom: 80px;
-    background-color: black;
   }
 
+  .minusB {
+    position: absolute;
+    bottom: 0;
+  }
 
   .productInterface {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
   }
+  
   .productInterface button {
     border: 1px solid #1D1F22;
     width: 24px;
@@ -68,8 +82,8 @@ export const ProductSmallCartStyled = styled.div`
 
   .imgContainer {
     object-fit: cover;
-    width: 105px;
-    height: 137px;
+    width: 108px;
+    height: 190px;
     padding-left: 2px;
   }
   

@@ -3,12 +3,14 @@ import {PRODUCTS} from "../apollo/ApolloQueries";
 
 const SET_PRODUCTS = "SET_PRODUCTS"
 const SET_SECTION = "SET_SECTION"
-const SET_FETCHING_STATUS = "SET_FETCHING_STATUS"
+const SET_FETCHED_CATEGORIES = "SET_FETCHED_CATEGORIES"
+const SET_ALL_FETCHED = "SET_ALL_FETCHED"
 
 let initialState = {
     sectionName: {title: "all"},
     products: [],
-    firstFetching: true
+    fetchedCategories: [],
+    isAllFetched: false
 };
 
 const sectionReducer = (state = initialState, action) => {
@@ -24,18 +26,40 @@ const sectionReducer = (state = initialState, action) => {
             }
         }
 
-        case SET_FETCHING_STATUS: {
+        case SET_FETCHED_CATEGORIES: {
+            debugger
             return {
                 ...state,
-                firstFetching: false
+                fetchedCategories: [...state.fetchedCategories, action.data]
             }
         }
 
         case SET_PRODUCTS: {
+            switch (action.data.name) {
+                case ("all"): {
+                    return {
+                        ...state,
+                        products: [...action.data.products]
+                    }
+                }
+                default:
+                    debugger
+                    return {
+                        ...state,
+                        products: [...state.products, ...action.data.products]
+                    }
+
+            }
+
+        }
+
+        case SET_ALL_FETCHED: {
             return {
-                products: [...action.data.products]
+                ...state,
+                isAllFetched: true
             }
         }
+
         default:
             return state;
     }
@@ -44,18 +68,21 @@ const sectionReducer = (state = initialState, action) => {
 
 export const setUpProducts = (data) => ({type: SET_PRODUCTS, data})
 export const setUpSection = (data) => ({type: SET_SECTION, data})
-export const setUpFetchingStatus = () => ({type: SET_FETCHING_STATUS})
+export const setUpFetchedCategories = (data) => ({type: SET_FETCHED_CATEGORIES, data})
+export const setUpFetchedAll = () => ({type: SET_ALL_FETCHED})
 
 export const getProducts = (categoryInput) => async (dispatch) => {
+    let section = {title: categoryInput}
     client.query({
         query: PRODUCTS,
-        variables: {categoryInput: categoryInput}
+        variables: {categoryInput: section}
     }).then(result => dispatch(setUpProducts(result.data.category)));
-    dispatch(setUpSection(categoryInput));
+    dispatch(setUpSection(section));
+    dispatch(setUpFetchedCategories(categoryInput))
 }
 
-export const changeFetchingStatus = () => async (dispatch) => {
-    dispatch(setUpFetchingStatus());
+export const changeAllFetchedStatus = () => async (dispatch) => {
+    dispatch(setUpFetchedAll());
 }
 
 export default sectionReducer;

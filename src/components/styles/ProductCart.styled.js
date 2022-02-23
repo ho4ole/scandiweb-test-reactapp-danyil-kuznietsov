@@ -7,15 +7,42 @@ export const ProductCartStyled = styled.div`
   padding: 10px 0;
   margin: 0 auto;
   justify-content: center;
-  border-top: 1px solid #E5E5E5;
 
 
   .product {
     border-bottom: 1px solid #E5E5E5;
     display: grid;
+    height: 190px;
     grid-template-columns: 1fr  1fr;
   }
 
+  .quantity {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 160%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .plusB {
+    font-size: 25px;
+    color: black;
+  }
+  
+  .minusB {
+    position: absolute;
+    bottom: 10px;
+    font-size: 25px;
+    color: black;
+  }
+  
   .attributes {
     display: flex;
     flex-flow: row;
@@ -33,35 +60,34 @@ export const ProductCartStyled = styled.div`
   .productInterface {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+    height: 160px;
+    width: 50px;
+    font-weight: 200;
   }
 
   .imgContainer {
     position: absolute;
     object-fit: cover;
-    width: 141px;
-    height: 150px;
     left: 50px;
     z-index: 0;
+    width: 141px;
+    height: 185px;
   }
   
   .arrowRight {
-    border: 2px solid #FFFFFF;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     z-index: 2;
     position: absolute;
     bottom: 80px;
     left: 50px;
-    background-color: black;
   }
   
   .arrowLeft {
-    border: 2px solid #FFFFFF;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     z-index: 2;
     position: absolute;
-    right: 50px;
+    right: 10px;
     bottom: 80px;
-    background-color: black;
   }
 
   .productInterface button {
@@ -71,9 +97,6 @@ export const ProductCartStyled = styled.div`
     width: 45px;
     height: 45px;
   }
-
-  img {
-    max-width: 100px;
-  }
+  
 
 `

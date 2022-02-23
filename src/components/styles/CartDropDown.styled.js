@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const CartDropDownStyled = styled.span`
+  
+  
   .dropdown {
     position: relative;
     display: inline-block;
@@ -12,7 +14,7 @@ export const CartDropDownStyled = styled.span`
     background-color: white;
     display: none;
     position: absolute;
-    min-width: 90px;
+    min-width: 150px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
   }
@@ -20,7 +22,6 @@ export const CartDropDownStyled = styled.span`
   .dropdown-content a {
     color: black;
     padding: 12px 16px;
-    text-decoration: none;
     display: block;
   }
 
@@ -57,8 +58,25 @@ export const CartDropDownStyled = styled.span`
   .checkButton {
     background: #5ECE7B;
     color: white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    width: 140px;
+    height: 43px;
+    border: none;
   }
 
+  .viewB {
+    width: 140px;
+    height: 43px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    
+  }
 
   .buttons {
     display: grid;

@@ -8,6 +8,7 @@ class SelectedAttributes extends Component {
             <>
                 {this.props.attribute.name === "Color"
                     ? this.props.attribute.items.map(item => <SelectedAttributeStyled>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a>{this.props.attribute.name}:</a> <label> <input type={"radio"} className={"dotInput"}
                                                                            defaultChecked={"true"}
                     />
@@ -15,6 +16,7 @@ class SelectedAttributes extends Component {
                             style={{background: `${item.value}`}} className="dot"/> </label> </SelectedAttributeStyled>)
 
                     : this.props.attribute.items.map(item => <SelectedAttributeStyled>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                         <a>{this.props.attribute.name}:</a> <label> <input type={"radio"} checked={"true"}
                     />
                         <span>{item.value}</span> </label> </SelectedAttributeStyled>)

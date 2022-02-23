@@ -5,7 +5,7 @@ export const PriceStyled = styled.span`
 
   font-family: 'Raleway', sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 700;
   font-size: 18px;
   line-height: 160%;
 `

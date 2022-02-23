@@ -7,7 +7,6 @@ import DOMPurify from "dompurify";
 
 class ProductSection extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +15,6 @@ class ProductSection extends React.Component {
     }
 
     changeMainPhoto = (photo) => {
-        debugger
         this.setState({
             mainPhoto: photo
         })
@@ -26,7 +24,9 @@ class ProductSection extends React.Component {
         return <ProductSectionStyled>
             <div className={"gallery"}>
                 {this.props.product.gallery.map(photo => (
-                    <div onClick={() => {this.changeMainPhoto(photo)}} key={photo} className={"imgContainer"} style={{backgroundImage: `url(${photo})`}}/>))}
+                    <div onClick={() => {
+                        this.changeMainPhoto(photo)
+                    }} key={photo} className={"imgContainer"} style={{backgroundImage: `url(${photo})`}}/>))}
             </div>
 
             <div className={"mainPhoto"}>
@@ -54,10 +54,11 @@ class ProductSection extends React.Component {
                         }}>ADD TO CART</BuyButtonStyled>
                         : <BuyButtonStyled disabled onClick={() => {
                             this.props.addProduct(this.props.product)
-                        }}>ADD TO CART</BuyButtonStyled>
+                        }}>OUT OF STOCK</BuyButtonStyled>
                     }
                 </div>
-                <div className={"description"} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.props.product.description)}}/>
+                <div className={"description"}
+                     dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(this.props.product.description)}}/>
             </div>
         </ProductSectionStyled>
     }

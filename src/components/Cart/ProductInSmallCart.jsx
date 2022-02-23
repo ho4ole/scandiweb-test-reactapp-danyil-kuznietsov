@@ -15,8 +15,7 @@ class ProductInSmallCart extends Component {
         }
     }
 
-    changePhotoLeft = () => {
-        console.log(this.state.photoIndex)
+    changeSmallPhotoLeft = () => {
         let index = this.state.photoIndex
         if (this.state.photoIndex === 0) {
             index = 0;
@@ -29,8 +28,7 @@ class ProductInSmallCart extends Component {
         })
     }
 
-    changePhotoRight = () => {
-        console.log(this.state.photoIndex)
+    changeSmallPhotoRight = () => {
         let index = this.state.photoIndex
         if (this.state.photoIndex === this.props.product.gallery.length - 1) {
             index = this.props.product.gallery.length - 1;
@@ -60,20 +58,27 @@ class ProductInSmallCart extends Component {
                     </div>
                     <div className={"productCount"}>
                         <div className={"productInterface"}>
-                            <button onClick={() => this.props.addQuantity(this.props.product)}>+</button>
-                            <span>{this.props.product.quantity}</span>
-                            <button onClick={() => this.props.minusQuantity(this.props.product)}>-</button>
+                            <button className={"plusB"} onClick={() => this.props.addQuantity(this.props.product)}>+
+                            </button>
+                            <span className={"quantity"}>{this.props.product.quantity}</span>
+                            <button className={"minusB"}
+                                    onClick={() => this.props.minusQuantity(this.props.product)}>-
+                            </button>
                         </div>
                         <div>
-                            <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
-                            <img alt={"arrow right"} onClick={() => {
-                                this.changePhotoLeft()
-                            }} className={"arrowRight"}
-                                 src={vectorRight}/>
-                            <img alt={"arrow left"} onClick={() => {
-                                this.changePhotoRight()
-                            }} className={"arrowLeft"}
-                                 src={vectorLeft}/>
+                            {this.props.product.gallery.length === 1 ?
+                                <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                                : <> <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                                    <img alt={"arrow right"} onClick={() => {
+                                        this.changeSmallPhotoLeft()
+                                    }} className={"arrowRight"}
+                                         src={vectorRight}/>
+                                    <img alt={"arrow left"} onClick={() => {
+                                        this.changeSmallPhotoRight()
+                                    }} className={"arrowLeft"}
+                                         src={vectorLeft}/> </>
+                            }
+
                         </div>
                     </div>
                 </div>

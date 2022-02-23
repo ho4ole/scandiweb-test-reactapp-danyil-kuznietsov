@@ -44,8 +44,6 @@ export const ProductSectionStyled = styled.div`
   }
 
   .mainPhoto img {
-    width: 610px;
-    height: 511px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -58,12 +56,6 @@ export const ProductSectionStyled = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     margin: 10px;
-  }
-
-  img {
-    width: 175px;
-    height: 90px;
-    padding: 20px;
   }
 
 

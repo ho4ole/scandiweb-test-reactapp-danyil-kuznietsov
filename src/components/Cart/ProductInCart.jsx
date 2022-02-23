@@ -57,23 +57,29 @@ class ProductInCart extends Component {
                                 <SelectedAttributes attribute={attribute} key={attribute.id}/>))}
                         </div>
                     </div>
-
                     <div className={"productCount"}>
                         <div className={"productInterface"}>
-                            <button onClick={() => this.props.addQuantity(this.props.product)}>+</button>
-                            <span>{this.props.product.quantity}</span>
-                            <button onClick={() => this.props.minusQuantity(this.props.product)}>-</button>
+                            <button className={"plusB"} onClick={() => this.props.addQuantity(this.props.product)}>+
+                            </button>
+                            <span className={"quantity"}>{this.props.product.quantity}</span>
+                            <button className={"minusB"}
+                                    onClick={() => this.props.minusQuantity(this.props.product)}>-
+                            </button>
                         </div>
                         <div>
-                            <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
-                            <img alt={"arrow right"} onClick={() => {
-                                this.changePhotoLeft()
-                            }} className={"arrowRight"}
-                                 src={vectorRight}/>
-                            <img alt={"arrow left"} onClick={() => {
-                                this.changePhotoRight()
-                            }} className={"arrowLeft"}
-                                 src={vectorLeft}/>
+                            {this.props.product.gallery.length === 1 ?
+                                <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                                : <> <img alt={"productPhoto"} className={"imgContainer"} src={this.state.mainPhoto}/>
+                                    <img alt={"arrow right"} onClick={() => {
+                                        this.changePhotoLeft()
+                                    }} className={"arrowRight"}
+                                         src={vectorRight}/>
+                                    <img alt={"arrow left"} onClick={() => {
+                                        this.changePhotoRight()
+                                    }} className={"arrowLeft"}
+                                         src={vectorLeft}/> </>
+                            }
+
                         </div>
                     </div>
                 </div>

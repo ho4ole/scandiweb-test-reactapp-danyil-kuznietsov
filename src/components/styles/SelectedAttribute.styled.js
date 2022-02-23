@@ -4,10 +4,9 @@ export const SelectedAttributeStyled = styled.div`
   
   @import url('${"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap"}');
   
-  width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   
   .dot {
     height: 25px;

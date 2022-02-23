@@ -11,7 +11,7 @@ class Cart extends Component {
         return (
             <Container>
                 <div>
-                    <div>CART</div>
+                    <div className={"textCart"}>CART</div>
                     {this.props.products.map(product => <ProductInCart key={product.id}
                                                                        minusQuantity={this.props.minusQuantity}
                                                                        addQuantity={this.props.addQuantity}
